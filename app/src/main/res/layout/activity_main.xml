@@ -21,13 +21,13 @@
             android:id="@+id/login_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar sesión!" />
+            android:text="@string/login_text" />
 
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar" />
+            android:text="@string/login_cta_text" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

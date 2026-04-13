@@ -23,6 +23,13 @@
             android:layout_height="wrap_content"
             android:text="@string/login_text" />
 
+        <ImageView
+            android:id="@+id/login_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/login_text"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"

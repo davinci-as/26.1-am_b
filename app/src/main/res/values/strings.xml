@@ -2,4 +2,5 @@
     <string name="app_name">26.1-am_b</string>
     <string name="login_text">Iniciar sesión!</string>
     <string name="login_cta_text">Iniciar</string>
+    <string name="login_text_alternative">Iniciando sesión..</string>
 </resources>

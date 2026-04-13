@@ -28,14 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/login_text"
+            android:onClick="sendMessage"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
-        <Button
+        <!--Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="sendMessage"
-            android:text="@string/login_cta_text" />
+            android:text="@string/login_cta_text" /-->
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

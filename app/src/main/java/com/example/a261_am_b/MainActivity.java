@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     public void sendMessage(View view) {
         Log.i("main-log", "sendMessage fue ejecutado");
+        TextView loginMessage = findViewById(R.id.login_message);
+        loginMessage.setText(R.string.login_text_alternative);
     }
 
     @Override
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button viewImage = new Button(this);
-        viewImage.setText("Mostrar imagen");
+        viewImage.setText(R.string.login_cta_text);
         viewImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

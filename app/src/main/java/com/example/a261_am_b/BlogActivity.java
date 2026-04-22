@@ -17,6 +17,10 @@ public class BlogActivity extends AppCompatActivity {
         Log.i("main-log", "sendMessage fue ejecutado");
         TextView loginMessage = findViewById(R.id.blog_message);
         loginMessage.setText(R.string.login_text_alternative);
+        Intent replyIntent = new Intent();
+        replyIntent.putExtra("blog-text", "R.string.demo_text");
+        setResult(RESULT_OK, replyIntent);
+        finish();
     }
 
     @Override

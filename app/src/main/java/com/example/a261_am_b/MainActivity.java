@@ -9,12 +9,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int ACTIVITY_OPTION = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode != ACTIVITY_OPTION) return;
+        if(resultCode != RESULT_OK) return;
+        if(!data.hasExtra("blog-text")) return;
+        Bundle pack = data.getExtras();
+        String blogPost = data.getStringExtra("blog-text");
+        Log.i("main-log", blogPost);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), BlogActivity.class);
                 final int BLOG_ID = 1;
                 intent.putExtra(getString(R.string.blog_id), BLOG_ID);
-                startActivity(intent);
+                startActivityForResult(intent, ACTIVITY_OPTION);
             }
         });
 

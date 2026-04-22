@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("main-log", "viewImage.onClick fue ejecutado");
                 Intent intent = new Intent(getApplicationContext(), BlogActivity.class);
+                final int BLOG_ID = 1;
+                intent.putExtra("blog-id", BLOG_ID);
                 startActivity(intent);
             }
         });

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("main-log", "viewImage.onClick fue ejecutado");
                 Intent intent = new Intent(getApplicationContext(), BlogActivity.class);
                 final int BLOG_ID = 1;
-                intent.putExtra("blog-id", BLOG_ID);
+                intent.putExtra(getString(R.string.blog_id), BLOG_ID);
                 startActivity(intent);
             }
         });

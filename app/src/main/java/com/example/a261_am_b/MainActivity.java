@@ -1,6 +1,9 @@
 package com.example.a261_am_b;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        //TODO: download image
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if(networkInfo != null && networkInfo.isConnected()) {
+            new ImageDownload().execute(getString(R.string.download_image));
+        } else {
+            Log.i("main-log", "no se pudo descargar");
+        }
 
         Button viewImage = new Button(this);
         viewImage.setText(R.string.login_cta_text);

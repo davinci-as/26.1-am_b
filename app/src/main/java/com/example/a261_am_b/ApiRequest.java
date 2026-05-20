@@ -3,11 +3,14 @@ package com.example.a261_am_b;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -42,15 +45,10 @@ public class ApiRequest extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        try {
-            JSONObject response = new JSONObject(s);
-            JSONArray results = response.getJSONArray("results");
-            JSONObject lastObject = results.getJSONObject(19);
-            Log.i("API", lastObject.getString("name"));
-
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-
+        Gson gson = new Gson();
+        ApiResponse response = gson.fromJson(s,ApiResponse.class);
+        ArrayList<Character> results = response.results;
+        Character lastObject = results.get(19);
+        Log.i("API", lastObject.status);
     }
 }

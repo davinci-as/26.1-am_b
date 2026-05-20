@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout loginContainer = findViewById(R.id.login_container);
         loginContainer.addView(viewImage);
 
+        (new ApiRequest()).execute(getString(R.string.API_ALL_CHARACTERS));
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

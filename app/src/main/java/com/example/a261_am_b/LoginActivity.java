@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,8 +23,11 @@ public class LoginActivity extends AppCompatActivity {
     public void loginLocalUser (View v) {
         mAuth = FirebaseAuth.getInstance();
 
-        String email = "demo@davinci.edu.ar";
-        String password = "demo1234";
+        String email = "";
+        String password = "";
+
+        email = ((EditText) findViewById(R.id.email)).getText().toString();
+        password = ((EditText) findViewById(R.id.password)).getText().toString();
 
         mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override

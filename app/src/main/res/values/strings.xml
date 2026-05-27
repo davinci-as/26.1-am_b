@@ -7,4 +7,5 @@
     <string name="blog_id">blog_id_key</string>
     <string name="download_image">https://images.milenio.com/Y7kXvJld3KHhk29EAU6W6DQoMaU=/942x532/uploads/media/2024/05/14/la-secuela-de-mortal-kombat.jpg</string>
     <string name="API_ALL_CHARACTERS">https://rickandmortyapi.com/api/character</string>
+    <string name="login_button_text">Iniciar sesión</string>
 </resources>

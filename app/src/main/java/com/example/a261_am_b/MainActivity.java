@@ -91,4 +91,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+
+    public void logoutAccount (View v) {
+        mAuth.signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

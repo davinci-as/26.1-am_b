@@ -15,11 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme._261am_b">
         <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".BlogActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -42,5 +42,18 @@
             android:layout_height="wrap_content"
             android:onClick="loginLocalUser"
             android:text="@string/login_button_text" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signupText" />
+
+        <Button
+            android:id="@+id/signupButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="createAccount"
+            android:text="@string/signup_cta_text" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

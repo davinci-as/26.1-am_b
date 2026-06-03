@@ -23,6 +23,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_text" />
 
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="logoutAccount"
+                android:text="@string/logout_button_text" />
+
             <!--Button
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"

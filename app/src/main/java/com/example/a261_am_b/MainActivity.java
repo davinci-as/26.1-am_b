@@ -55,7 +55,27 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if(currentUser != null) {
-            Log.i("Firebase login", currentUser.getUid());
+            String uid = currentUser.getUid();
+            Log.i("Firebase login", uid);
+            CollectionReference usersRef = db.collection("users");
+            usersRef.whereEqualTo("uid", uid);
+
+            usersRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    if(queryDocumentSnapshots.getDocuments().isEmpty()) {
+                        //Modal, o mensaje para el usuario
+                        return;
+                    }
+                    DocumentSnapshot document = queryDocumentSnapshots.getDocuments().get(0);
+                    //document.getId(); //Si me interesa
+                    if(document == null) return;
+                    String fullName = document.getData().get("fullName").toString();
+                    Log.i("firebase-data", fullName);
+
+                }
+            });
+
         } else {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);

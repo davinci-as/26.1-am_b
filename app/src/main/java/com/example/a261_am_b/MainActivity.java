@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             String uid = currentUser.getUid();
             Log.i("Firebase login", uid);
             CollectionReference usersRef = db.collection("users");
-            usersRef.whereEqualTo("uid", uid);
+            usersRef.whereEqualTo("uid", uid).limit(1);
 
             usersRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     if(document == null) return;
                     String fullName = document.getData().get("fullName").toString();
                     Log.i("firebase-data", fullName);
+                    TextView loginMessage = findViewById(R.id.login_message);
+
+                    loginMessage.setText(fullName);
 
                 }
             });

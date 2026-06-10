@@ -16,15 +16,22 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         if(mAuth.getCurrentUser() != null) {
             Intent intent = new Intent(this, MainActivity.class);
@@ -57,6 +64,9 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void createUser(View v) {
+        int yearsOld = Integer.parseInt(((TextView) findViewById(R.id.yearsOld)).getText().toString());
+        String phoneNumber = ((TextView) findViewById(R.id.phoneNumber)).getText().toString();
+        String fullName = ((TextView)  findViewById(R.id.fullName)).getText().toString();
         String signupEmail = ((TextView) findViewById(R.id.signupEmail)).getText().toString();
         String signupPassword = ((TextView) findViewById(R.id.signupPassword)).getText().toString();
         String signupPasswordVerification = ((TextView) findViewById(R.id.signupPasswordVerification)).getText().toString();
@@ -87,8 +97,21 @@ public class SignupActivity extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
                 FirebaseUser user = authResult.getUser();
                 if(user == null) return;
-                Log.i("create-user", user.getUid());
                 //user.sendEmailVerification();
+                HashMap<String, Object> newUser = new HashMap<>();
+                newUser.put("uid", user.getUid());
+                newUser.put("yearsOld", yearsOld);
+                newUser.put("phoneNumber", phoneNumber);
+                newUser.put("fullName", fullName);
+                newUser.put("estructura", "no limitada");
+                db.collection(getString(R.string.USERS_COLLECTION)).add(newUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
             }
         });
     }

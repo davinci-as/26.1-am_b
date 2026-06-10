@@ -14,4 +14,5 @@
     <string name="logout_button_text">Cerrar sesión</string>
     <string name="signup_title">Creación de cuenta</string>
     <string name="signup_button_text">Crear cuenta</string>
+    <string name="USERS_COLLECTION">users</string>
 </resources>

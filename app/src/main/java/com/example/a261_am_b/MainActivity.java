@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         if(currentUser != null) {
             String uid = currentUser.getUid();
             Log.i("Firebase login", uid);
-            CollectionReference usersRef = db.collection("users");
+            CollectionReference usersRef = db.collection(getString(R.string.USERS_COLLECTION));
             usersRef.whereEqualTo("uid", uid).limit(1);
 
             usersRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
